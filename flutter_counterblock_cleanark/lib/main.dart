@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counterblock_cleanark/config/router/routes.dart';
 import 'package:flutter_counterblock_cleanark/presentation/blocs/character_bloc.dart';
 import 'package:flutter_counterblock_cleanark/presentation/blocs/theme/tema_bloc.dart';
 import 'package:flutter_counterblock_cleanark/presentation/blocs/theme/tema_state.dart';
-import 'package:flutter_counterblock_cleanark/presentation/screens/characters_screen.dart';
 import 'injection_container.dart' as injection_container;
 
 void main() async {
@@ -24,10 +24,10 @@ class MyApp extends StatelessWidget {
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {
-          return MaterialApp(
+          return MaterialApp.router(
+            routerConfig: router,
             debugShowCheckedModeBanner: false,
             theme: state.appTheme.getTheme(),
-            home: const CharactersScreen(),
           );
         },
       ),

@@ -5,8 +5,12 @@ import 'package:flutter_counterblock_cleanark/domain/entities/character.dart';
 import 'package:flutter_counterblock_cleanark/presentation/blocs/character_bloc.dart';
 import 'package:flutter_counterblock_cleanark/presentation/blocs/character_event.dart';
 import 'package:flutter_counterblock_cleanark/presentation/blocs/character_state.dart';
+import 'package:flutter_counterblock_cleanark/presentation/blocs/login/login_block.dart';
+import 'package:flutter_counterblock_cleanark/presentation/blocs/login/login_event.dart';
 import 'package:flutter_counterblock_cleanark/presentation/blocs/theme/tema_bloc.dart';
 import 'package:flutter_counterblock_cleanark/presentation/blocs/theme/tema_evento.dart';
+import 'package:flutter_counterblock_cleanark/presentation/widgets/dialogoCS.dart';
+import 'package:go_router/go_router.dart';
 
 class CharacterList extends StatelessWidget {
   final List<Character> characters;
@@ -75,7 +79,15 @@ class _CharacterScreenState extends State<CharactersScreen> {
     final themeBloc = context.read<ThemeBloc>();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Personajes de Harry Potter')),
+      appBar: AppBar(
+        title: const Text('Personajes de Harry Potter'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.exit_to_app),
+            onPressed: () => mostrarDialogoDeConfirmacion(context),
+          ),
+        ],
+      ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
